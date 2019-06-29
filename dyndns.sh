@@ -24,7 +24,7 @@ while ( true ); do
     
     test -z $record_id && die "No record found with given domain name!"
 
-    ip="$(curl -s ipinfo.io/ip)"
+    ip="$(curl -s myip.ipip.net | grep -E -o '([0-9]{1,3}[\.]){3}[0-9]{1,3}')"
     data="{\"type\": \"A\", \"name\": \"$NAME\", \"data\": \"$ip\"}"
     url="$dns_list/$record_id"
 
